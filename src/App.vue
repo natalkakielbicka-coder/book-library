@@ -1,5 +1,6 @@
 <script setup>
 import { ref } from 'vue'
+import BookItem from './components/BookItem.vue'
 
 const books = ref([
   {
@@ -28,11 +29,7 @@ const books = ref([
     <h1>Biblioteka książek</h1>
 
     <ul class="book-list">
-      <li v-for="book in books" :key="book.id" class="book-item">
-        <strong>{{ book.title }}</strong>
-        <span>{{ book.author }}</span>
-        <span>{{ book.status }}</span>
-      </li>
+      <BookItem v-for="book in books" :key="book.id" :book="book" />
     </ul>
   </main>
 </template>
@@ -48,12 +45,5 @@ const books = ref([
   margin: 0;
   padding: 0;
   list-style: none;
-}
-
-.book-item {
-  display: flex;
-  gap: 16px;
-  padding: 14px 0;
-  border-bottom: 1px solid #ddd;
 }
 </style>
